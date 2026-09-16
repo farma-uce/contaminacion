@@ -1,1 +1,521 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Puntos Azules en el Ecuador — Farmacontaminación y descarte seguro de medicamentos</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#152420;
+    --teal-900:#0E3B39;
+    --teal-700:#1F5C58;
+    --teal-500:#2F8079;
+    --sage-100:#EEF3EC;
+    --sage-200:#DCE8DA;
+    --paper:#FAF8F3;
+    --rust:#B5502E;
+    --rust-100:#F6E4DB;
+    --moss:#4C7A4A;
+    --moss-100:#E4EEE0;
+    --line: rgba(21,36,32,0.12);
+    --shadow: 0 18px 40px rgba(14,59,57,0.10);
+    --radius: 18px;
+    --maxw: 1160px;
+  }
 
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    font-family:"Inter",-apple-system,BlinkMacSystemFont,sans-serif;
+    color:var(--ink);
+    background:var(--paper);
+    line-height:1.6;
+  }
+  h1,h2,h3,.display{
+    font-family:"Fraunces","Georgia",serif;
+    font-weight:600;
+    letter-spacing:-0.01em;
+    margin:0;
+  }
+  a{color:inherit;}
+  img{max-width:100%;display:block;}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px;}
+
+  /* ---------- Header ---------- */
+  header.site{
+    position:sticky;top:0;z-index:40;
+    background:rgba(250,248,243,0.92);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-row{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:16px 28px;max-width:var(--maxw);margin:0 auto;
+  }
+  .brand{
+    display:flex;align-items:center;gap:10px;
+    font-family:"Fraunces",serif;font-weight:700;font-size:1.05rem;
+    color:var(--teal-900);
+  }
+  .brand .dot{width:10px;height:10px;border-radius:50%;background:var(--rust);}
+  nav.links{display:flex;gap:26px;font-size:0.92rem;font-weight:500;}
+  nav.links a{text-decoration:none;color:var(--teal-900);opacity:0.75;}
+  nav.links a:hover{opacity:1;}
+  @media (max-width:760px){ nav.links{display:none;} }
+
+  /* ---------- Hero ---------- */
+  .hero{
+    padding:76px 0 56px;
+    position:relative;
+    overflow:hidden;
+    background:
+      radial-gradient(560px 320px at 88% -10%, rgba(47,128,121,0.16), transparent 65%),
+      var(--paper);
+  }
+  .hero .wrap{display:grid;grid-template-columns:1.25fr 0.9fr;gap:56px;align-items:end;}
+  @media (max-width:860px){ .hero .wrap{grid-template-columns:1fr;} }
+  .eyebrow-line{
+    display:flex;align-items:center;gap:10px;
+    font-size:0.85rem;color:var(--teal-700);font-weight:600;margin-bottom:18px;
+  }
+  .eyebrow-line::before{content:"";width:26px;height:2px;background:var(--rust);display:inline-block;}
+  .hero h1{
+    font-size:clamp(2.4rem,5vw,3.7rem);
+    line-height:1.04;
+    color:var(--teal-900);
+  }
+  .hero h1 em{font-style:italic;color:var(--rust);}
+  .hero p.lede{
+    margin-top:22px;font-size:1.12rem;max-width:52ch;color:#33453f;
+  }
+  .hero-side{
+    background:var(--teal-900);
+    color:var(--sage-100);
+    border-radius:var(--radius);
+    padding:30px 30px 26px;
+    box-shadow:var(--shadow);
+  }
+  .hero-side p.kicker{font-size:0.78rem;letter-spacing:0.02em;color:#9FC7C2;margin:0 0 10px;font-weight:600;}
+  .hero-side p.def{font-size:1.02rem;color:#EAF3F1;margin:0;}
+  .hero-side p.def b{color:#fff;}
+  .cta-row{display:flex;gap:14px;flex-wrap:wrap;margin-top:30px;}
+  .btn{
+    display:inline-flex;align-items:center;gap:8px;
+    padding:13px 22px;border-radius:999px;
+    font-weight:600;font-size:0.95rem;text-decoration:none;
+    border:1px solid transparent;transition:transform .15s ease, background .2s ease;
+  }
+  .btn:hover{transform:translateY(-1px);}
+  .btn-solid{background:var(--teal-900);color:#fff;}
+  .btn-solid:hover{background:var(--teal-700);}
+  .btn-outline{border-color:var(--teal-900);color:var(--teal-900);}
+  .btn-outline:hover{background:var(--sage-100);}
+
+  /* ---------- Sections generic ---------- */
+  section{padding:64px 0;}
+  .section-head{max-width:64ch;margin-bottom:38px;}
+  .section-head .tag{color:var(--rust);font-weight:600;font-size:0.85rem;}
+  .section-head h2{font-size:clamp(1.7rem,3vw,2.3rem);margin-top:8px;color:var(--teal-900);}
+
+  .split{display:grid;grid-template-columns:1fr 1fr;gap:26px;}
+  @media (max-width:760px){ .split{grid-template-columns:1fr;} }
+
+  .card{
+    border-radius:var(--radius);
+    padding:32px;
+    border:1px solid var(--line);
+    background:#fff;
+  }
+  .card.filled{background:var(--sage-100);border-color:var(--sage-200);}
+  .card h3{font-size:1.28rem;color:var(--teal-900);margin-bottom:14px;}
+  .card p{color:#2f423c;margin:0 0 12px;}
+  .card ul{margin:10px 0 0;padding-left:20px;color:#2f423c;}
+  .card li{margin-bottom:8px;}
+
+  /* ---------- Stat strip ---------- */
+  .stats-band{
+    background:var(--teal-900);
+    color:#fff;
+    padding:52px 0;
+  }
+  .stats-band .section-head h2{color:#fff;}
+  .stats-band .section-head p{color:#BFDAD6;}
+  .stats-band .tag{color:#8FD0C6;}
+  .stat-grid{
+    display:grid;grid-template-columns:repeat(5,1fr);gap:18px;
+  }
+  @media (max-width:900px){ .stat-grid{grid-template-columns:repeat(2,1fr);} }
+  .stat{
+    background:rgba(255,255,255,0.06);
+    border:1px solid rgba(255,255,255,0.14);
+    border-radius:14px;padding:22px 18px;
+  }
+  .stat .num{font-family:"Fraunces",serif;font-size:2.1rem;font-weight:600;color:#8FD0C6;}
+  .stat .lbl{font-size:0.88rem;color:#D7EBE8;margin-top:6px;}
+  .stats-source{margin-top:22px;font-size:0.82rem;color:#9FC7C2;}
+
+  /* ---------- Map section ---------- */
+  .map-panel{
+    border-radius:var(--radius);
+    overflow:hidden;
+    border:1px solid var(--line);
+    background:#fff;
+    box-shadow:var(--shadow);
+  }
+  .map-legend{
+    display:flex;flex-wrap:wrap;gap:10px;
+    padding:18px 24px;border-bottom:1px solid var(--line);
+    background:var(--sage-100);
+  }
+  .legend-chip{
+    display:inline-flex;align-items:center;gap:8px;
+    font-size:0.86rem;font-weight:600;color:var(--teal-900);
+    background:#fff;border:1px solid var(--line);
+    border-radius:999px;padding:6px 14px;
+  }
+  .legend-chip .dot{width:10px;height:10px;border-radius:50%;display:inline-block;}
+  .map-panel .frame-wrap{
+    background:#EDEBE3;
+    min-height:520px;
+    position:relative;
+  }
+  .map-panel iframe{
+    width:100%;height:560px;border:0;display:block;
+  }
+  .map-foot{
+    display:flex;flex-wrap:wrap;gap:14px;align-items:center;justify-content:space-between;
+    padding:18px 24px;border-top:1px solid var(--line);
+    font-size:0.9rem;color:#3d534c;
+  }
+  /* ---------- Medications ---------- */
+  .med-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+  @media (max-width:980px){ .med-grid{grid-template-columns:1fr;} }
+  .med-card{
+    border-radius:var(--radius);
+    border:1px solid var(--line);
+    background:#fff;
+    overflow:hidden;
+    box-shadow:var(--shadow);
+    display:flex;flex-direction:column;
+  }
+  .med-photo{
+    background:var(--sage-100);
+    padding:22px;
+    display:flex;align-items:center;justify-content:center;
+    min-height:180px;
+  }
+  .med-photo img{max-height:150px;width:auto;margin:0 auto;}
+  .med-body{padding:24px 24px 26px;flex:1;display:flex;flex-direction:column;}
+  .med-body h3{font-size:1.25rem;color:var(--teal-900);}
+  .tabs{display:flex;gap:6px;margin:16px 0 16px;background:var(--sage-100);border-radius:999px;padding:4px;}
+  .tab-btn{
+    flex:1;border:0;background:transparent;padding:9px 10px;border-radius:999px;
+    font-family:"Inter",sans-serif;font-size:0.82rem;font-weight:600;color:var(--teal-700);
+    cursor:pointer;transition:background .15s ease,color .15s ease;
+  }
+  .tab-btn.active{background:var(--teal-900);color:#fff;}
+  .tab-panel{display:none;}
+  .tab-panel.active{display:block;}
+  .warn-box{
+    background:var(--rust-100);border:1px solid rgba(181,80,46,0.2);
+    border-radius:12px;padding:14px 16px;margin-bottom:14px;
+  }
+  .warn-box p{margin:0;color:#6b3016;font-size:0.93rem;}
+  .warn-label{font-size:0.72rem;text-transform:none;font-weight:700;color:var(--rust);display:block;margin-bottom:4px;}
+  .good-box{
+    background:var(--moss-100);border:1px solid rgba(76,122,74,0.22);
+    border-radius:12px;padding:14px 16px;margin-bottom:12px;
+  }
+  .good-box .k{font-weight:700;color:var(--moss);font-size:0.86rem;display:block;margin-bottom:3px;}
+  .good-box p{margin:0;color:#274225;font-size:0.92rem;}
+  .uses-list{font-size:0.92rem;color:#2f423c;margin:0;padding-left:18px;}
+  .ref-link{
+    display:inline-block;margin-top:14px;font-size:0.85rem;font-weight:600;
+    color:var(--teal-700);text-decoration:none;border-bottom:1px solid var(--teal-500);
+  }
+  .ref-link:hover{color:var(--teal-900);}
+
+  /* ---------- Footer ---------- */
+  footer{
+    background:var(--teal-900);color:#BFDAD6;
+    padding:44px 0 34px;font-size:0.86rem;
+  }
+  footer .wrap{display:flex;flex-wrap:wrap;gap:24px;justify-content:space-between;align-items:flex-start;}
+  footer a{color:#EAF3F1;text-decoration:underline;text-underline-offset:2px;}
+  footer .cols{display:flex;gap:56px;flex-wrap:wrap;}
+  footer h4{font-family:"Fraunces",serif;color:#fff;font-size:1rem;margin:0 0 10px;font-weight:600;}
+  footer ul{list-style:none;margin:0;padding:0;}
+  footer li{margin-bottom:6px;}
+
+  ::selection{background:var(--rust);color:#fff;}
+  :focus-visible{outline:2px solid var(--rust);outline-offset:2px;}
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    .btn{transition:none;}
+  }
+</style>
+</head>
+<body>
+
+<header class="site">
+  <div class="nav-row">
+    <div class="brand"><span class="dot"></span>Puntos Azules · Ecuador</div>
+    <nav class="links">
+      <a href="#farmacontaminacion">Farmacontaminación</a>
+      <a href="#mapa">Mapa de puntos</a>
+      <a href="#medicamentos">Medicamentos</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <div class="eyebrow-line">Campaña de descarte seguro de medicamentos</div>
+      <h1>Puntos Azules<br>en el <em>Ecuador</em></h1>
+      <p class="lede">Un medicamento caducado que va a la basura o al inodoro no desaparece: llega al agua y al suelo. Conoce qué es la farmacontaminación, dónde depositar tus medicamentos en desuso y qué alternativas existen antes de automedicarte.</p>
+      <div class="cta-row">
+        <a class="btn btn-solid" href="#mapa">Encontrar un punto azul</a>
+        <a class="btn btn-outline" href="#medicamentos">Ver medicamentos comunes</a>
+      </div>
+    </div>
+    <div class="hero-side">
+      <p class="kicker">LA FARMACONTAMINACIÓN</p>
+      <p class="def">Presencia y acumulación de <b>medicamentos o sus metabolitos en el ambiente</b> —especialmente en agua, suelo y sedimentos— debido a actividades humanas. Puede producirse cuando los medicamentos son desechados incorrectamente, o cuando los residuos de hospitales, industrias farmacéuticas y otros establecimientos llegan a los sistemas de agua.</p>
+    </div>
+  </div>
+</section>
+
+<section id="farmacontaminacion">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="tag">Por qué importa</p>
+      <h2>¿Cómo evitamos la farmacontaminación?</h2>
+    </div>
+    <div class="split">
+      <div class="card filled">
+        <h3>Tres hábitos que sí cambian las cosas</h3>
+        <ul>
+          <li>Desechar correctamente los medicamentos caducados en puntos autorizados, como los <b>Puntos Azules</b>, y no arrojarlos al inodoro, lavabo o basura común.</li>
+          <li>No automedicarse, ya que el consumo innecesario de medicamentos aumenta la cantidad de residuos farmacéuticos.</li>
+          <li>Comprar solo los medicamentos necesarios, evitando acumular productos que posteriormente puedan caducar.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>¿Qué son los Puntos Azules?</h3>
+        <p>Espacios destinados a la recolección adecuada de medicamentos caducados o que ya no se utilizan, evitando que sean desechados en la basura común, el agua o el suelo. En ellos se pueden depositar tabletas, cápsulas, jarabes, gotas, cremas y otros medicamentos en desuso o caducados.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="split">
+      <div class="card">
+        <h3>La automedicación</h3>
+        <p>El uso de medicamentos por iniciativa propia, sin la evaluación ni indicación de un profesional de la salud. Puede causar efectos adversos, interacciones entre medicamentos, intoxicaciones, enmascaramiento de enfermedades y otros daños al organismo.</p>
+        <p>El uso inadecuado de antibióticos puede favorecer la aparición de resistencia bacteriana. También contribuye a la farmacocontaminación al generar un mayor uso y descarte de medicamentos.</p>
+      </div>
+      <div class="card filled">
+        <h3>Qué se recibe en un Punto Azul</h3>
+        <p>Según EMGIRS EP, los residuos que pueden depositarse incluyen: medicinas caducadas, focos y fluorescentes, lacas y pinturas, aparatos eléctricos y electrónicos pequeños, así como pilas y baterías usadas. Los puntos están ubicados estratégicamente en centros comerciales, instituciones educativas, mercados populares, terminales y supermercados.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="stats-band">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="tag">Impacto proyectado 2025</p>
+      <h2>De mantenerse esta tendencia, al cierre del año se prevé haber recuperado</h2>
+    </div>
+    <div class="stat-grid">
+      <div class="stat"><div class="num">6 t</div><div class="lbl">Medicinas caducadas</div></div>
+      <div class="stat"><div class="num">2,04 t</div><div class="lbl">Focos</div></div>
+      <div class="stat"><div class="num">1,2 t</div><div class="lbl">Fluorescentes</div></div>
+      <div class="stat"><div class="num">12 t</div><div class="lbl">Aparatos electrónicos pequeños</div></div>
+      <div class="stat"><div class="num">2,4 t</div><div class="lbl">Pilas usadas</div></div>
+    </div>
+    <p class="stats-source">Fuente: EMGIRS EP — Ubicación de contenedores para residuos especiales.</p>
+  </div>
+</section>
+
+<section id="mapa">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="tag">Herramienta oficial</p>
+      <h2>Encuentra tu Punto Azul más cercano</h2>
+      <p>Este mapa interactivo es el localizador oficial de EMGIRS EP (Municipio del Distrito Metropolitano de Quito), integrado directamente desde su sitio.</p>
+    </div>
+
+    <div class="map-panel">
+      <div class="map-legend">
+        <span class="legend-chip"><span class="dot" style="background:#2F8079;"></span>Pilas</span>
+        <span class="legend-chip"><span class="dot" style="background:#B5502E;"></span>Especiales</span>
+        <span class="legend-chip"><span class="dot" style="background:#C21E1E;"></span>Medicamentos caducados</span>
+        <span class="legend-chip"><span class="dot" style="background:#D4A017;"></span>Aceite usado</span>
+      </div>
+      <div class="frame-wrap">
+        <iframe src="https://emgirs.gob.ec/especiales/especiales.html" title="Mapa oficial de Puntos Azules — EMGIRS EP" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+      <div class="map-foot">
+        <span>Mapa interactivo integrado directamente desde <strong>emgirs.gob.ec</strong> — usa los filtros dentro del mapa para ver cada categoría.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="medicamentos">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="tag">Casos frecuentes</p>
+      <h2>Tres medicamentos de venta libre, tres riesgos por uso excesivo</h2>
+      <p>Toca "Alternativas" en cada tarjeta para ver qué probar antes de recurrir al medicamento por cuenta propia.</p>
+    </div>
+
+    <div class="med-grid">
+
+      <!-- PARACETAMOL -->
+      <article class="med-card">
+        <div class="med-photo"><img src="imagenes/Paracetamol.jpeg" alt="Caja de Paracetamol 500 mg"></div>
+        <div class="med-body">
+          <h3>Paracetamol</h3>
+          <div class="tabs" role="tablist" aria-label="Información sobre Paracetamol">
+            <button class="tab-btn active" data-target="para-info">Información</button>
+            <button class="tab-btn" data-target="para-alt">Alternativas</button>
+          </div>
+
+          <div class="tab-panel active" id="para-info">
+            <div class="warn-box">
+              <span class="warn-label">Uso excesivo</span>
+              <p>Puede dañar el hígado, especialmente al combinar varios productos que lo contienen sin darse cuenta.</p>
+            </div>
+            <p style="font-weight:600;color:var(--teal-900);margin-bottom:6px;font-size:0.92rem;">Usos</p>
+            <ul class="uses-list">
+              <li>Analgésico, antipirético</li>
+              <li>Dolor asociado a resfriados</li>
+              <li>Dolor musculoesquelético leve</li>
+            </ul>
+            <a class="ref-link" href="https://www.nhs.uk/medicines/paracetamol-for-adults/" target="_blank" rel="noopener">Conoce más de sus efectos en uso inadecuado ↗</a>
+          </div>
+
+          <div class="tab-panel" id="para-alt">
+            <div class="good-box"><span class="k">Analgésico — respiración relajante</span><p>Siéntate con la espalda apoyada y los pies en el suelo. Inspira suavemente por la nariz contando hasta 5 y suelta el aire por la boca contando hasta 5, sin forzar ni aguantar la respiración. Repite durante 5 minutos.</p></div>
+            <div class="good-box"><span class="k">Antipirético — hidratación</span><p>Bebe agua con frecuencia para mantener la orina de color amarillo claro. Evita la deshidratación, pero no baja directamente la fiebre.</p></div>
+            <div class="good-box"><span class="k">Dolor asociado a resfriados — gárgaras</span><p>Disuelve media cucharadita de sal en un vaso de agua tibia. Haz gárgaras y escupe el líquido, sin tragarlo.</p></div>
+            <div class="good-box"><span class="k">Dolor musculoesquelético leve — compresa fría</span><p>Envuelve una bolsa de hielo en una toalla y aplícala durante 15–20 minutos, cada 2–3 horas durante los primeros 2–3 días. Nunca pongas hielo directamente sobre la piel.</p></div>
+          </div>
+        </div>
+      </article>
+
+      <!-- IBUPROFENO -->
+      <article class="med-card">
+        <div class="med-photo"><img src="imagenes/Ibuprofeno.jpeg" alt="Caja de Ibuprofeno 800 mg"></div>
+        <div class="med-body">
+          <h3>Ibuprofeno</h3>
+          <div class="tabs" role="tablist" aria-label="Información sobre Ibuprofeno">
+            <button class="tab-btn active" data-target="ibu-info">Información</button>
+            <button class="tab-btn" data-target="ibu-alt">Alternativas</button>
+          </div>
+
+          <div class="tab-panel active" id="ibu-info">
+            <div class="warn-box">
+              <span class="warn-label">Uso excesivo</span>
+              <p>Aumenta el riesgo de úlceras, sangrado digestivo y daño renal con dosis altas o uso prolongado.</p>
+            </div>
+            <p style="font-weight:600;color:var(--teal-900);margin-bottom:6px;font-size:0.92rem;">Usos</p>
+            <ul class="uses-list">
+              <li>Analgésico, antiinflamatorio, antipirético</li>
+              <li>Dolor menstrual</li>
+              <li>Dolor musculoesquelético y dolor dental</li>
+            </ul>
+            <a class="ref-link" href="https://www.nhs.uk/medicines/paracetamol-for-adults/" target="_blank" rel="noopener">Conoce más de sus efectos en uso inadecuado ↗</a>
+          </div>
+
+          <div class="tab-panel" id="ibu-alt">
+            <div class="good-box"><span class="k">Analgésico — dolor de cabeza por tensión</span><p>Siéntate cómodamente, inspira por la nariz contando hasta 5 y espira por la boca contando hasta 5, sin forzar. Repite durante 5 minutos para relajarte.</p></div>
+            <div class="good-box"><span class="k">Antiinflamatorio / antipirético — torcedura reciente</span><p>Aplica una bolsa de hielo envuelta en una toalla durante 15–20 minutos, cada 2–3 horas. Nunca directamente sobre la piel.</p></div>
+            <div class="good-box"><span class="k">Dolor menstrual</span><p>Coloca una bolsa de agua tibia envuelta en una toalla sobre la parte baja del abdomen. Evita temperaturas que quemen.</p></div>
+            <div class="good-box"><span class="k">Dolor musculoesquelético</span><p>Si hay rigidez o espasmo muscular en la espalda, aplica una compresa tibia envuelta en tela sobre la zona para ayudar a relajar el músculo.</p></div>
+            <div class="good-box"><span class="k">Dolor dental</span><p>Disuelve media cucharadita de sal en un vaso de agua tibia, enjuágate y escupe sin tragar. Es un alivio temporal: si dura más de 2 días, o aparece fiebre o hinchazón, consulta al dentista.</p></div>
+          </div>
+        </div>
+      </article>
+
+      <!-- OMEPRAZOL -->
+      <article class="med-card">
+        <div class="med-photo"><img src="imagenes/Omeprazol.jpeg" alt="Caja de Omeprazol 20 mg"></div>
+        <div class="med-body">
+          <h3>Omeprazol</h3>
+          <div class="tabs" role="tablist" aria-label="Información sobre Omeprazol">
+            <button class="tab-btn active" data-target="ome-info">Información</button>
+            <button class="tab-btn" data-target="ome-alt">Alternativas</button>
+          </div>
+
+          <div class="tab-panel active" id="ome-info">
+            <div class="warn-box">
+              <span class="warn-label">Uso excesivo</span>
+              <p>Tomarlo por cuenta propia durante mucho tiempo puede ocultar síntomas de otras enfermedades y aumentar el riesgo de déficit de vitamina B12 y fracturas.</p>
+            </div>
+            <p style="font-weight:600;color:var(--teal-900);margin-bottom:6px;font-size:0.92rem;">Usos</p>
+            <ul class="uses-list">
+              <li>Enfermedad por reflujo gastroesofágico (ERGE)</li>
+            </ul>
+            <a class="ref-link" href="https://www.nhs.uk/medicines/paracetamol-for-adults/" target="_blank" rel="noopener">Conoce más de sus efectos en uso inadecuado ↗</a>
+          </div>
+
+          <div class="tab-panel" id="ome-alt">
+            <div class="good-box"><span class="k">ERGE — cúrcuma</span><p>Como una posible alternativa al omeprazol para aliviar la dispepsia funcional, es decir, molestias como dolor en la parte alta del abdomen o sensación de llenura.</p></div>
+            <div class="good-box"><span class="k">ERGE — horario de la cena</span><p>Una medida concreta es terminar de cenar al menos 3 horas antes de acostarte. Por ejemplo, si te acuestas a las 23:00, termina de cenar antes de las 20:00. Esto puede reducir el reflujo nocturno.</p></div>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="cols">
+      <div>
+        <h4>Fuentes</h4>
+        <ul>
+          <li><a href="https://emgirs.gob.ec/ubicacion-de-contenedores-para-residuos-especiales/" target="_blank" rel="noopener">EMGIRS EP — Ubicación de contenedores para residuos especiales</a></li>
+          <li><a href="https://www.nhs.uk/medicines/paracetamol-for-adults/" target="_blank" rel="noopener">NHS — Paracetamol for adults</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Sobre esta página</h4>
+        <ul>
+          <li>Contenido educativo sobre farmacontaminación</li>
+          <li>Mapa oficial integrado desde EMGIRS EP</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.querySelectorAll('.med-card').forEach(function(card){
+    var buttons = card.querySelectorAll('.tab-btn');
+    buttons.forEach(function(btn){
+      btn.addEventListener('click', function(){
+        var target = btn.getAttribute('data-target');
+        buttons.forEach(function(b){ b.classList.remove('active'); });
+        card.querySelectorAll('.tab-panel').forEach(function(p){ p.classList.remove('active'); });
+        btn.classList.add('active');
+        card.querySelector('#' + target).classList.add('active');
+      });
+    });
+  });
+</script>
+
+</body>
+</html>
