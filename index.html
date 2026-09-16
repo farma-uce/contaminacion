@@ -147,9 +147,8 @@
   .stats-band .section-head p{color:#BFDAD6;}
   .stats-band .tag{color:#8FD0C6;}
   .stat-grid{
-    display:grid;grid-template-columns:repeat(5,1fr);gap:18px;
+    display:grid;grid-template-columns:repeat(1,1fr);gap:18px;max-width:260px;
   }
-  @media (max-width:900px){ .stat-grid{grid-template-columns:repeat(2,1fr);} }
   .stat{
     background:rgba(255,255,255,0.06);
     border:1px solid rgba(255,255,255,0.14);
@@ -344,10 +343,6 @@
     </div>
     <div class="stat-grid">
       <div class="stat"><div class="num">6 t</div><div class="lbl">Medicinas caducadas</div></div>
-      <div class="stat"><div class="num">2,04 t</div><div class="lbl">Focos</div></div>
-      <div class="stat"><div class="num">1,2 t</div><div class="lbl">Fluorescentes</div></div>
-      <div class="stat"><div class="num">12 t</div><div class="lbl">Aparatos electrónicos pequeños</div></div>
-      <div class="stat"><div class="num">2,4 t</div><div class="lbl">Pilas usadas</div></div>
     </div>
     <p class="stats-source">Fuente: EMGIRS EP — Ubicación de contenedores para residuos especiales.</p>
   </div>
@@ -356,7 +351,7 @@
 <section id="mapa">
   <div class="wrap">
     <div class="section-head">
-      <p class="tag">Localizador propio</p>
+      <p class="tag">Localizador</p>
       <h2>Encuentra tu Punto Azul más cercano</h2>
       <p>Mapa con la ubicación de los puntos de recolección de <strong>medicamentos caducados</strong> en Quito, a partir de los datos públicos de EMGIRS EP.</p>
     </div>
@@ -523,12 +518,10 @@
   });
 
   var puntosMedicamentos = [
-    // CASAS SOMOS
     {lat:-0.2081313397599053,lng:-78.49814227116445,popup:'CASAS SOMOS LA MARISCAL'},
     {lat:-0.224128854955399,lng:-78.50841177116443,popup:'CASAS SOMOS SAN MARCOS'},
     {lat:-0.24657688274443612,lng:-78.51802508465784,popup:'CASAS SOMOS CRIRIYACU'},
     {lat:-0.2681416117892335,lng:-78.54293272883554,popup:'CASAS SOMOS SOLANDA'},
-    // CASAS SOMOS EXTRA
     {lat:-0.21183884957993496,lng:-78.40497208870313,popup:'CASA SOMOS TUMBACO'},
     {lat:-0.09887497942574068,lng:-78.42153479440019,popup:'CASA SOMOS CALDERON'},
     {lat:-0.08786376850476132,lng:-78.45267176762006,popup:'CASA SOMOS CARAPUNGO'},
@@ -541,13 +534,11 @@
     {lat:-0.15621850872840826,lng:-78.4396109210639,popup:'CASA SOMOS NAYON'},
     {lat:-0.22500722469991716,lng:-78.33713930387141,popup:'CASA SOMOS PIFO'},
     {lat:-0.3192584610358004,lng:-78.55111981495943,popup:'CASA SOMOS NUEVA AURORA'},
-    // ADMINISTRACIONES Y OTROS
     {lat:-0.2140619672604187,lng:-78.40621283068432,popup:'ADMINISTRACIÓN ZONAL TUMBACO'},
     {lat:-0.18239890904989794,lng:-78.48190586339253,popup:'LABORATORIO DE RECICLAJE'},
     {lat:-0.19964177742845704,lng:-78.50992083617257,popup:'FACULTAD DE BIOQUIMICA'},
     {lat:-0.29705602669741765,lng:-78.46125141921371,popup:'CONJUNTO COLIBRI'},
     {lat:-0.24203,lng:-78.50681,popup:'ECO PIO XII'},
-    // FYBECA
     {lat:-0.17722332489785958,lng:-78.4856369334434,popup:'FYBECA C.C.I.'},
     {lat:-0.16150255620458923,lng:-78.49765575093976,popup:'FYBECA EL BOSQUE'},
     {lat:-0.10874063387613685,lng:-78.45716757116435,popup:'FYBECA PORTAL SHOPPING'},
@@ -566,7 +557,6 @@
     {lat:-0.16811340420044435,lng:-78.47585129277415,popup:'FYBECA GASPAR DE VILLARROEL'},
     {lat:-0.2021872734188606,lng:-78.48673054958917,popup:'FYBECA BACA ORTIZ'},
     {lat:-0.17531993924175704,lng:-78.48502473455687,popup:'FYBECA UNIQUE'},
-    // SANA SANA
     {lat:-0.2809741613791989,lng:-78.55252106832519,popup:'SANA SANA MORAN VALVERDE'},
     {lat:-0.20166896685938024,lng:-78.43136117503586,popup:'SANA SANA INTEROCEANICA'},
     {lat:-0.21248041740911044,lng:-78.4052913954424,popup:'SANA SANA TUMBACO'},
@@ -580,7 +570,6 @@
     {lat:-0.21920283913478597,lng:-78.51090037485221,popup:'SANA SANA MEJIA'},
     {lat:-0.08314780988703831,lng:-78.41683660517575,popup:'SANA SANA SIERRA HERMOSA'},
     {lat:-0.15410751868094794,lng:-78.47579402544295,popup:'SANA SANA AV. EL INCA'},
-    // MEDI
     {lat:-0.18221,lng:-78.47712,popup:'MEDI QUITO CATALINA ALDAZ'},
     {lat:-0.17319,lng:-78.48416,popup:'MEDI QUITO PLATAFORMA NORTE'},
     {lat:-0.05368,lng:-78.45552,popup:'MEDI QUITO POMASQUI'},
@@ -594,10 +583,8 @@
     {lat:-0.11821,lng:-78.48366,popup:'MEDI QUITO REAL AUDIENCIA'},
     {lat:-0.2046,lng:-78.50297,popup:'MEDI HOSP ANDRADE MARIN'},
     {lat:-0.25119,lng:-78.52218,popup:'MEDI QUITO CC EL RECREO'},
-    // PAF
     {lat:-0.170305,lng:-78.487727,popup:'PAF QUITO AXXIS'},
     {lat:-0.24473,lng:-78.52029,popup:'PAF QUITO DIFARMES SUR'},
-    // ECO QUITO
     {lat:-0.13688,lng:-78.46544,popup:'ECO QUITO AMAGASI DEL INCA'},
     {lat:-0.320097,lng:-78.473344,popup:'ECO QUITO CHILLO JIJON'},
     {lat:-0.2179,lng:-78.50723,popup:'ECO QUITO CALLE GUAYAQUIL'},
@@ -617,10 +604,8 @@
     {lat:-0.08509,lng:-78.50983,popup:'ECO QUITO LA ROLDOS'},
     {lat:-0.10802,lng:-78.44678,popup:'ECO QUITO LLANO GRANDE 2'},
     {lat:-0.12011,lng:-78.49395,popup:'ECO QUITO COTOCOLLAO 2'},
-    // ECO VALLES
     {lat:-0.32166,lng:-78.43955,popup:'ECO SANGOLQUI SAN FRANCISCO'},
     {lat:-0.28272,lng:-78.49218,popup:'ECO CONOCOTO 6 DE DICIEMBRE'},
-    // PUNTOS OFICIALES FUERA DE QUITO
     {lat:-2.898520,lng:-79.018099,popup:'PUNTO OFICIAL — CUENCA'},
     {lat:-2.173519,lng:-79.906007,popup:'PUNTO OFICIAL — GUAYAQUIL'},
     {lat:-2.148626,lng:-79.905688,popup:'PUNTO OFICIAL — GUAYAQUIL'},
@@ -675,8 +660,6 @@
         .addTo(map)
         .bindPopup('📍 Estás aquí');
     }, function(){
-      // el usuario no otorgó permiso o no se pudo obtener la ubicación;
-      // el mapa y los marcadores de medicamentos siguen funcionando igual
     }, { enableHighAccuracy: true });
   }
 })();
